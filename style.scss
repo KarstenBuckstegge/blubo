@@ -1,0 +1,39 @@
+$background-color: #fffdf8;
+
+*,
+*:before,
+*:after {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background: $background-color;
+}
+
+.cover {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: url('./static/background.jpg');
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+}
+
+.elephant {
+    position: absolute;
+    display: block;
+    bottom: 23%;
+    left: 50%;
+    height: 25%;
+    transform: translateX(-55%);
+}
+
+.buy {
+    width: 100vw;
+    height: 100vh;
+    box-shadow: $background-color 0px -50px 70px;
+    z-index: 1;
+    position: relative;
+}

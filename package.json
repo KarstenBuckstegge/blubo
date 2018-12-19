@@ -1,0 +1,14 @@
+{
+  "name": "blubo",
+  "version": "1.0.0",
+  "description": "Blubo der kleine blaue Elefant",
+  "main": "index.js",
+  "scripts": {
+    "styles": "node-sass style.scss style.css"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^4.11.0"
+  }
+}
