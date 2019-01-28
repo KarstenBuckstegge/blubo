@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Blubo - Der kleine blaue Elefant</title>
     <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 </head>
 
 <body class="body">
@@ -16,8 +17,15 @@
         <a class="navigation__item js__navigation__item" href="#buy">Bestellen</a>
     </nav>
     <section id="intro" class="section section--intro">
-        <img class="intro__title" src="./static/title.png" alt="blubo der kleine blaue Elefant" />
+        <h1 class="intro__title">
+            <img class="intro__title__image" src="./static/title.png" alt="Blubo der kleine blaue Elefant" />
+        </h1>
         <img class="intro__blubo" src="./static/blubo.png" alt="blubo" />
+        <div class="intro__ctas">
+            <a class="link js__navigation__item" href="#book">Blick ins Buch</a>
+            &nbsp;|&nbsp;
+            <a class="link js__navigation__item" href="#buy">Bestellen</a>
+        </div>
     </section>
 
     <section id="book" class="section">
@@ -25,8 +33,43 @@
     </section>
 
     <section id="buy" class="section">
-        Buy the Book!
+        <div class="buy__title">
+            <h2 class="h2">Jetzt bestellen</h2>
+            <span class="buy__title__price">Nur 15€</span>
+            <span class="buy__title__shipping">(zzgl. Versand)</span>
+        </div>
+
+        <form id="contact">
+            <label class="buy__contact__row">
+                <span class="buy__contact__label">Vorname</span>
+                <input class="buy__contact__input" type="text" />
+            </label>
+            <label class="buy__contact__row">
+                <span class="buy__contact__label">Nachname</span>
+                <input class="buy__contact__input" type="text" />
+            </label>
+            <label class="buy__contact__row">
+                <span class="buy__contact__label">Straße, Hausnr.</span>
+                <input class="buy__contact__input" type="text" />
+            </label>
+            <label class="buy__contact__row">
+                <span class="buy__contact__label">PLZ, Ort</span>
+                <input class="buy__contact__input" type="text" />
+            </label>
+            <label class="buy__contact__row buy__contact__row--textarea">
+                <span class="buy__contact__label">Anmerkungen</span>
+                <textarea class="buy__contact__input" rows="5"></textarea>
+            </label>
+        </form>
     </section>
+
+    <footer class="footer">
+        <span class="copy">&copy; 2019 Brigitte Friebel</span>
+        <div class="footer__links">
+            <a class="link footer__link" href="./imprint.html">Imprint</a>
+            <a class="link footer__link" href="./contact.html">Contact</a>
+        </div>
+    </footer>
 
     <script src="./dist/main.js"></script>
 </body>

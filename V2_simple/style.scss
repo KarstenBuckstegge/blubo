@@ -1,6 +1,8 @@
 // ============= VARS ==========
 $base: 4px;
+$font-size: 20px;
 $section-padding: $base * 20;
+$blue: #0066cc;
 
 // ============= RESETS ==========
 *,
@@ -8,6 +10,7 @@ $section-padding: $base * 20;
 *::after {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 
 html,
@@ -18,8 +21,12 @@ body {
 
 // ============= BASE ==========
 .body {
+    position: relative;
     background: url('./static/background.jpg');
     background-size: 100%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: $font-size;
+    color: $blue;
 }
 
 .navigation {
@@ -28,29 +35,115 @@ body {
     left: $section-padding;
 }
 
-.navigation__item {
-    display: block;
-}
-
 .section {
     min-height: 100vh;
-    padding: $section-padding $section-padding $section-padding $section-padding*2;
+    margin-left: 220px;
+    padding: $section-padding $section-padding $section-padding/2;
 }
 
+.link {
+    text-decoration: none;
+
+    &,
+    &:active,
+    &:visited {
+        color: $blue;
+    }
+
+    &:hover {
+        color: darken($blue, 20%);
+    }
+}
+
+.navigation__item {
+    display: block;
+    text-decoration: none;
+    opacity: .5;
+    transition: opacity 300ms ease-in;
+
+    &+& {
+        margin-top: $base * 2;
+    }
+
+    &,
+    &:hover,
+    &:active,
+    &:visited {
+        color: $blue;
+    }
+
+    &:hover,
+    &:active {
+        opacity: 1;
+    }
+}
 
 // ============= INTRO ==========
 .section--intro {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
 }
 
 .intro__title {
+    width: 33%;
+    max-width: 500px;
+}
+
+.intro__title__image {
     width: 100%;
-    max-width: 300px;
 }
 
 .intro__blubo {
-    width: 100%;
-    max-width: 300px;
+    width: 33%;
+    max-width: 500px;
+}
+
+
+// ============= BUY ==========
+.buy__contact__row {
+    display: block;
+    text-align: right;
+
+    &+& {
+        margin-top: $base * 4;
+    }
+}
+
+.buy__contact__row--textarea {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.buy__contact__label {
+    cursor: pointer;
+    margin-right: $base * 2;
+}
+
+.buy__contact__input {
+    width: 66%;
+    padding: $base*2 $base*4;
+    outline: none;
+    box-shadow: none;
+    border: 1px solid $blue;
+    background: none;
+    font-size: 16px;
+    color: $blue;
+}
+
+
+// ============= FOOTER ==========
+.footer {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: $section-padding/4 $section-padding;
+
+    .footer__link+.footer__link {
+        margin-left: $base * 2;
+    }
 }
