@@ -15,7 +15,7 @@ body {
   background-size: 100%;
   font-family: 'Montserrat', sans-serif;
   font-size: 20px;
-  color: #0066cc; }
+  color: #4255a2; }
 
 .navigation {
   position: fixed;
@@ -30,9 +30,9 @@ body {
 .link {
   text-decoration: none; }
   .link, .link:active, .link:visited {
-    color: #0066cc; }
+    color: #4255a2; }
   .link:hover {
-    color: #003366; }
+    color: #242f5a; }
 
 .navigation__item {
   display: block;
@@ -42,7 +42,7 @@ body {
   .navigation__item + .navigation__item {
     margin-top: 8px; }
   .navigation__item, .navigation__item:hover, .navigation__item:active, .navigation__item:visited {
-    color: #0066cc; }
+    color: #4255a2; }
   .navigation__item:hover, .navigation__item:active {
     opacity: 1; }
 
@@ -82,10 +82,10 @@ body {
   padding: 8px 16px;
   outline: none;
   box-shadow: none;
-  border: 1px solid #0066cc;
+  border: 1px solid #4255a2;
   background: none;
   font-size: 16px;
-  color: #0066cc; }
+  color: #4255a2; }
 
 .footer {
   position: absolute;
