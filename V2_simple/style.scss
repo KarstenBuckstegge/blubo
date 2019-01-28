@@ -1,0 +1,56 @@
+// ============= VARS ==========
+$base: 4px;
+$section-padding: $base * 20;
+
+// ============= RESETS ==========
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+}
+
+html,
+body {
+    min-height: 100vh;
+}
+
+
+// ============= BASE ==========
+.body {
+    background: url('./static/background.jpg');
+    background-size: 100%;
+}
+
+.navigation {
+    position: fixed;
+    top: $section-padding;
+    left: $section-padding;
+}
+
+.navigation__item {
+    display: block;
+}
+
+.section {
+    min-height: 100vh;
+    padding: $section-padding $section-padding $section-padding $section-padding*2;
+}
+
+
+// ============= INTRO ==========
+.section--intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.intro__title {
+    width: 100%;
+    max-width: 300px;
+}
+
+.intro__blubo {
+    width: 100%;
+    max-width: 300px;
+}
