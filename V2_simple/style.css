@@ -24,8 +24,12 @@ body {
 
 .section {
   min-height: 100vh;
+  max-width: 1400px;
   margin-left: 220px;
   padding: 80px 80px 40px; }
+  @media (min-width: 1840px) {
+    .section {
+      margin: 0 auto; } }
 
 .link {
   text-decoration: none; }
@@ -62,6 +66,17 @@ body {
 .intro__blubo {
   width: 33%;
   max-width: 500px; }
+
+.book {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; }
+
+.book__image {
+  align-self: flex-start; }
+
+.book__text {
+  width: 80%; }
 
 .buy__contact__row {
   display: block;
