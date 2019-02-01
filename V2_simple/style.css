@@ -31,6 +31,10 @@ body {
     .section {
       margin: 0 auto; } }
 
+.h2 {
+  font-family: 'Anton', sans-serif;
+  font-size: 60px; }
+
 .link {
   text-decoration: none; }
   .link, .link:active, .link:visited {
@@ -77,6 +81,25 @@ body {
 
 .book__text {
   width: 80%; }
+
+.buy__title {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 60px;
+  font-family: 'Anton', sans-serif; }
+
+.buy__title__price {
+  font-size: 40px; }
+
+.buy__contact {
+  display: flex; }
+
+.buy__contact__image {
+  margin-right: 20px; }
+
+.buy__contact__form {
+  flex-shrink: 0;
+  min-width: 70%; }
 
 .buy__contact__row {
   display: block;

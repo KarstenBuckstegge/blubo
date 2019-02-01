@@ -8,6 +8,7 @@
     <title>Blubo - Der kleine blaue Elefant</title>
     <link rel="stylesheet" href="./style.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
 </head>
 
 <body class="body">
@@ -38,33 +39,43 @@
 
     <section id="buy" class="section">
         <div class="buy__title">
-            <h2 class="h2">Jetzt bestellen</h2>
-            <span class="buy__title__price">Nur 15€</span>
-            <span class="buy__title__shipping">(zzgl. Versand)</span>
+            <div>
+                <h2 class="h2">Jetzt bestellen</h2>
+                <span class="buy__title__price">Nur 15€</span>
+                <span class="buy__title__shipping">(zzgl. Versand)</span>
+            </div>
         </div>
 
-        <form id="contact">
-            <label class="buy__contact__row">
-                <span class="buy__contact__label">Vorname</span>
-                <input class="buy__contact__input" type="text" />
-            </label>
-            <label class="buy__contact__row">
-                <span class="buy__contact__label">Nachname</span>
-                <input class="buy__contact__input" type="text" />
-            </label>
-            <label class="buy__contact__row">
-                <span class="buy__contact__label">Straße, Hausnr.</span>
-                <input class="buy__contact__input" type="text" />
-            </label>
-            <label class="buy__contact__row">
-                <span class="buy__contact__label">PLZ, Ort</span>
-                <input class="buy__contact__input" type="text" />
-            </label>
-            <label class="buy__contact__row buy__contact__row--textarea">
-                <span class="buy__contact__label">Anmerkungen</span>
-                <textarea class="buy__contact__input" rows="5"></textarea>
-            </label>
-        </form>
+        <div class="buy__contact">
+            <div class="buy__contact__image">
+                <img src="./static/book.png" alt="das Buch">
+            </div>
+
+            <div class="buy__contact__form">
+                <form id="contact">
+                    <label class="buy__contact__row">
+                        <span class="buy__contact__label">Vorname</span>
+                        <input class="buy__contact__input" type="text" />
+                    </label>
+                    <label class="buy__contact__row">
+                        <span class="buy__contact__label">Nachname</span>
+                        <input class="buy__contact__input" type="text" />
+                    </label>
+                    <label class="buy__contact__row">
+                        <span class="buy__contact__label">Straße, Hausnr.</span>
+                        <input class="buy__contact__input" type="text" />
+                    </label>
+                    <label class="buy__contact__row">
+                        <span class="buy__contact__label">PLZ, Ort</span>
+                        <input class="buy__contact__input" type="text" />
+                    </label>
+                    <label class="buy__contact__row buy__contact__row--textarea">
+                        <span class="buy__contact__label">Anmerkungen</span>
+                        <textarea class="buy__contact__input" rows="5"></textarea>
+                    </label>
+                </form>
+            </div>
+        </div>
     </section>
 
     <footer class="footer">
