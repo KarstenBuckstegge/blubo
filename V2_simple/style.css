@@ -16,11 +16,9 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-size: 20px;
   color: #4255a2; }
-
-.navigation {
-  position: fixed;
-  top: 80px;
-  left: 80px; }
+  @media (max-width: 1024px) {
+    .body {
+      padding-top: 88px; } }
 
 .section {
   min-height: 100vh;
@@ -30,6 +28,10 @@ body {
   @media (min-width: 1840px) {
     .section {
       margin: 0 auto; } }
+  @media (max-width: 1024px) {
+    .section {
+      margin: 0;
+      padding: 20px; } }
 
 .h2 {
   font-family: 'Anton', sans-serif;
@@ -41,6 +43,66 @@ body {
     color: #4255a2; }
   .link:hover {
     color: #242f5a; }
+
+.header {
+  position: fixed;
+  top: 80px;
+  left: 80px; }
+  @media (max-width: 1024px) {
+    .header {
+      top: 0;
+      right: 0;
+      left: 0;
+      max-width: 100vw;
+      padding: 16px;
+      background: url("./static/background.jpg");
+      border-bottom: 1px solid #4255a2; } }
+
+@media (max-width: 1024px) {
+  .navigation {
+    display: none;
+    height: 0;
+    opacity: 0; }
+    .navigation__toggle:checked + .navigation {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 0;
+      opacity: 0;
+      animation: navigationToggle 800ms ease;
+      animation-fill-mode: forwards; } }
+
+.navigation__toggle {
+  display: none; }
+
+.navigation__burger {
+  position: relative;
+  display: none;
+  cursor: pointer; }
+  @media (max-width: 1024px) {
+    .navigation__burger {
+      display: block;
+      width: 40px;
+      height: 32px; } }
+
+.navigation__burger__middle {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%); }
+  .navigation__burger__middle, .navigation__burger__middle:before, .navigation__burger__middle:after {
+    width: 100%;
+    height: 8px;
+    border-radius: 2px;
+    background: #4255a2; }
+  .navigation__burger__middle:before, .navigation__burger__middle:after {
+    content: '';
+    position: absolute;
+    display: block; }
+  .navigation__burger__middle:before {
+    top: -12px; }
+  .navigation__burger__middle:after {
+    bottom: -12px; }
 
 .navigation__item {
   display: block;
@@ -135,3 +197,11 @@ body {
   padding: 20px 80px; }
   .footer .footer__link + .footer__link {
     margin-left: 8px; }
+
+@keyframes navigationToggle {
+  50% {
+    height: calc(100vh - 64px);
+    opacity: 0; }
+  to {
+    height: calc(100vh - 64px);
+    opacity: 1; } }

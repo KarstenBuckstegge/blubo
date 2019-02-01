@@ -12,11 +12,19 @@
 </head>
 
 <body class="body">
-    <nav class="navigation">
-        <a class="navigation__item js__navigation__item" href="#intro">Blubo</a>
-        <a class="navigation__item js__navigation__item" href="#book">Blick ins Buch</a>
-        <a class="navigation__item js__navigation__item" href="#buy">Bestellen</a>
-    </nav>
+    <header class="header">
+        <label class="navigation__toggle__button" for="navigation__toggle">
+            <div class="navigation__burger">
+                <div class="navigation__burger__middle"></div>
+            </div>
+        </label>
+        <input class="navigation__toggle" id="navigation__toggle" type="checkbox" />
+        <nav class="navigation">
+            <a class="navigation__item js__navigation__item" href="#intro">Blubo</a>
+            <a class="navigation__item js__navigation__item" href="#book">Blick ins Buch</a>
+            <a class="navigation__item js__navigation__item" href="#buy">Bestellen</a>
+        </nav>
+    </header>
     <section id="intro" class="section section--intro">
         <h1 class="intro__title">
             <img class="intro__title__image" src="./static/title.png" alt="Blubo der kleine blaue Elefant" />
