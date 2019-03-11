@@ -69,14 +69,14 @@ body {
     display: none;
     height: 0;
     opacity: 0; }
-    .navigation__toggle:checked + .navigation {
+    .navigation__toggle:checked ~ .navigation {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 0;
       opacity: 0;
-      animation: navigationToggle 800ms ease;
+      animation: navigationToggle 0.8s ease;
       animation-fill-mode: forwards; } }
 
 .navigation__toggle {
@@ -92,23 +92,33 @@ body {
       width: 40px;
       height: 32px; } }
 
-.navigation__burger__middle {
+.navigation__burger__base {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%); }
-  .navigation__burger__middle, .navigation__burger__middle:before, .navigation__burger__middle:after {
+  top: 0;
+  transform-origin: left;
+  transition: transform 0.8s ease; }
+  .navigation__burger__base, .navigation__burger__base:before, .navigation__burger__base:after {
     width: 100%;
     height: 8px;
     border-radius: 2px;
     background: #4255a2; }
-  .navigation__burger__middle:before, .navigation__burger__middle:after {
+  .navigation__burger__base:before, .navigation__burger__base:after {
     content: "";
     position: absolute;
-    display: block; }
-  .navigation__burger__middle:before {
-    top: -12px; }
-  .navigation__burger__middle:after {
-    bottom: -12px; }
+    display: block;
+    transform-origin: left;
+    transition: transform 0.8s ease, opacity 0.8s ease; }
+  .navigation__burger__base:before {
+    top: 12px; }
+  .navigation__burger__base:after {
+    top: 24px; }
+  .navigation__toggle:checked ~ .navigation__toggle__button .navigation__burger__base {
+    transform: translateX(7px) translateY(25px) rotate(-45deg); }
+  .navigation__toggle:checked ~ .navigation__toggle__button .navigation__burger__base::before {
+    opacity: 0;
+    transform: translateX(7px) translateY(-25px) rotate(45deg); }
+  .navigation__toggle:checked ~ .navigation__toggle__button .navigation__burger__base::after {
+    transform: translateX(20px) translateY(-44px) rotate(90deg); }
 
 .navigation__item {
   display: block;

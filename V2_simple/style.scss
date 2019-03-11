@@ -10,6 +10,7 @@ $blue: #4255a2;
 $section-menu-margin: 220px;
 $section-max-width: 1400px;
 $small-breakpoint: 1024px;
+$nav-animation-default: 0.8s ease;
 
 // ============= MIXINS ==========
 @mixin mediaSmall {
@@ -111,7 +112,7 @@ body {
     height: 0;
     opacity: 0;
 
-    .navigation__toggle:checked + & {
+    .navigation__toggle:checked ~ & {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -119,7 +120,7 @@ body {
       height: 0;
       opacity: 0;
 
-      animation: navigationToggle 800ms ease;
+      animation: navigationToggle $nav-animation-default;
       animation-fill-mode: forwards;
     }
   }
@@ -141,10 +142,11 @@ body {
   }
 }
 
-.navigation__burger__middle {
+.navigation__burger__base {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 0;
+  transform-origin: left;
+  transition: transform $nav-animation-default;
 
   &,
   &:before,
@@ -160,13 +162,28 @@ body {
     content: "";
     position: absolute;
     display: block;
+    transform-origin: left;
+    transition: transform $nav-animation-default, opacity $nav-animation-default;
   }
 
   &:before {
-    top: -$base * 3;
+    top: $base * 3;
   }
   &:after {
-    bottom: -$base * 3;
+    top: $base * 6;
+  }
+
+  .navigation__toggle:checked ~ .navigation__toggle__button & {
+    & {
+      transform: translateX(7px) translateY(25px) rotate(-45deg);
+    }
+    &::before {
+      opacity: 0;
+      transform: translateX(7px) translateY(-25px) rotate(45deg);
+    }
+    &::after {
+      transform: translateX(20px) translateY(-44px) rotate(90deg);
+    }
   }
 }
 
