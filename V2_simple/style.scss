@@ -5,307 +5,380 @@ $section-padding: $base * 20;
 $section-padding-mobile: $base * 5;
 $burger-height-mobile: $base * 8;
 $header-padding-mobile: $base * 4;
-$header-height-mobile: $burger-height-mobile + $header-padding-mobile*2;
+$header-height-mobile: $burger-height-mobile + $header-padding-mobile * 2;
 $blue: #4255a2;
 $section-menu-margin: 220px;
 $section-max-width: 1400px;
 $small-breakpoint: 1024px;
 
-
 // ============= MIXINS ==========
 @mixin mediaSmall {
-    @media (max-width: $small-breakpoint) {
-        @content;
-    }
+  @media (max-width: $small-breakpoint) {
+    @content;
+  }
 }
-
 
 // ============= RESETS ==========
 *,
 *::before,
 *::after {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 html,
 body {
-    min-height: 100vh;
+  min-height: 100vh;
 }
-
 
 // ============= BASE ==========
 .body {
-    position: relative;
-    background: url('./static/background.jpg');
-    background-size: 100%;
-    font-family: 'Montserrat', sans-serif;
-    font-size: $font-size;
-    color: $blue;
+  position: relative;
+  background: url("./static/background.jpg");
+  background-size: 100%;
+  font-family: "Montserrat", sans-serif;
+  font-size: $font-size;
+  color: $blue;
 
-    @include mediaSmall {
-        padding-top: $burger-height-mobile + $header-padding-mobile + $base*10;
-    }
+  @include mediaSmall {
+    padding-top: $header-height-mobile;
+  }
 }
 
 .section {
-    min-height: 100vh;
-    max-width: $section-max-width;
-    margin-left: $section-menu-margin;
-    padding: $section-padding $section-padding $section-padding/2;
-    
-    @media (min-width: #{$section-menu-margin*2 + $section-max-width}) {
-        margin: 0 auto;
-    }
+  min-height: 100vh;
+  max-width: $section-max-width;
+  margin-left: $section-menu-margin;
+  padding: $section-padding $section-padding $section-padding/2;
 
-    @include mediaSmall {
-        margin: 0;
-        padding: $section-padding-mobile;
-    }
+  @media (min-width: #{$section-menu-margin*2 + $section-max-width}) {
+    margin: 0 auto;
+  }
+
+  @include mediaSmall {
+    margin: 0;
+    padding: $section-padding-mobile;
+    padding-top: $section-padding-mobile + $header-height-mobile;
+  }
 }
 
 .h2 {
-    font-family: 'Anton', sans-serif;
-    font-size: $font-size * 3;
+  font-family: "Anton", sans-serif;
+  font-size: $font-size * 3;
+
+  @include mediaSmall {
+    font-size: $font-size * 2;
+  }
 }
 
 .link {
-    text-decoration: none;
+  text-decoration: none;
 
-    &,
-    &:active,
-    &:visited {
-        color: $blue;
-    }
+  &,
+  &:active,
+  &:visited {
+    color: $blue;
+  }
 
-    &:hover {
-        color: darken($blue, 20%);
-    }
+  &:hover {
+    color: darken($blue, 20%);
+  }
 }
-
 
 // ============= NAVIGATION ==========
 .header {
-    position: fixed;
-    top: $section-padding;
-    left: $section-padding;
+  position: fixed;
+  top: $section-padding;
+  left: $section-padding;
 
-    @include mediaSmall {
-        top: 0;
-        right: 0;
-        left: 0;
-        max-width: 100vw;
-        padding: $header-padding-mobile;
-        background: url('./static/background.jpg');
-        border-bottom: 1px solid $blue;
-    }
+  @include mediaSmall {
+    top: 0;
+    right: 0;
+    left: 0;
+    max-width: 100vw;
+    padding: $header-padding-mobile;
+    background: url("./static/background.jpg");
+    border-bottom: 1px solid $blue;
+    z-index: 10;
+  }
 }
 
 .navigation {
-    @include mediaSmall {
-        display: none;
-        height: 0;
-        opacity: 0;
+  @include mediaSmall {
+    display: none;
+    height: 0;
+    opacity: 0;
 
-        .navigation__toggle:checked + & {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 0;
-            opacity: 0;
+    .navigation__toggle:checked + & {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 0;
+      opacity: 0;
 
-            animation: navigationToggle 800ms ease;
-            animation-fill-mode: forwards;
-        }
+      animation: navigationToggle 800ms ease;
+      animation-fill-mode: forwards;
     }
+  }
 }
 
 .navigation__toggle {
-    display: none;
+  display: none;
 }
 
 .navigation__burger {
-    position: relative;
-    display: none;
-    cursor: pointer;
+  position: relative;
+  display: none;
+  cursor: pointer;
 
-    @include mediaSmall {
-        display: block;
-        width: $base * 10;
-        height: $burger-height-mobile;
-    }
+  @include mediaSmall {
+    display: block;
+    width: $base * 10;
+    height: $burger-height-mobile;
+  }
 }
 
 .navigation__burger__middle {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  &,
+  &:before,
+  &:after {
+    width: 100%;
+    height: $base * 2;
+    border-radius: 2px;
+    background: $blue;
+  }
+
+  &:before,
+  &:after {
+    content: "";
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    display: block;
+  }
 
-    &, &:before, &:after {
-        width: 100%;
-        height: $base * 2;
-        border-radius: 2px;
-        background: $blue;
-    }
-
-    &:before, &:after {
-        content: '';
-        position: absolute;
-        display: block;
-    }
-
-    &:before {
-        top: -$base * 3;
-    }
-    &:after {
-        bottom: -$base * 3;
-    }
+  &:before {
+    top: -$base * 3;
+  }
+  &:after {
+    bottom: -$base * 3;
+  }
 }
 
 .navigation__item {
-    display: block;
-    text-decoration: none;
-    opacity: .5;
-    transition: opacity 300ms ease-in;
+  display: block;
+  text-decoration: none;
+  opacity: 0.5;
+  transition: opacity 300ms ease-in;
 
-    & + & {
-        margin-top: $base * 2;
-    }
+  & + & {
+    margin-top: $base * 2;
+  }
 
-    &,
-    &:hover,
-    &:active,
-    &:visited {
-        color: $blue;
-    }
+  &,
+  &:hover,
+  &:active,
+  &:visited {
+    color: $blue;
+  }
 
-    &:hover,
-    &:active {
-        opacity: 1;
-    }
+  &:hover,
+  &:active {
+    opacity: 1;
+  }
 }
 
 // ============= INTRO ==========
 .section--intro {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  height: calc(100vh - #{$header-height-mobile});
+  min-height: auto;
+
+  @include mediaSmall {
+    padding-top: $section-padding-mobile;
+  }
 }
 
 .intro__title {
-    width: 33%;
-    max-width: 500px;
+  width: 33%;
+  max-width: 500px;
+
+  @include mediaSmall {
+    width: 60%;
+  }
 }
 
 .intro__title__image {
-    width: 100%;
+  width: 100%;
 }
 
 .intro__blubo {
-    width: 33%;
-    max-width: 500px;
-}
+  width: 33%;
+  max-width: 500px;
 
+  @include mediaSmall {
+    width: 80%;
+  }
+}
 
 // ============= BOOK ==========
 .book {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  @include mediaSmall {
+    align-items: center;
+  }
 }
 
 .book__image {
-    align-self: flex-start;
+  align-self: flex-start;
+
+  @include mediaSmall {
+    align-self: auto;
+    margin: $base * 10 0;
+  }
 }
 
 .book__text {
-    width: 80%;
+  width: 80%;
 }
-
 
 // ============= BUY ==========
 .buy__title {
-    display: flex;
-    justify-content: center;
-    margin-bottom: $base * 15;
-    font-family: 'Anton', sans-serif;
+  display: flex;
+  justify-content: center;
+  margin-bottom: $base * 15;
+  font-family: "Anton", sans-serif;
+
+  @include mediaSmall {
+    margin-bottom: $base * 10;
+  }
 }
 
 .buy__title__price {
-    font-size: $font-size * 2;
+  font-size: $font-size * 2;
+
+  @include mediaSmall {
+    font-size: $font-size * 1.5;
+  }
 }
 
 .buy__contact {
-    display: flex;
+  display: flex;
+
+  @include mediaSmall {
+    flex-direction: column;
+  }
 }
 
 .buy__contact__image {
-    margin-right: $base * 5;
+  margin-right: $base * 5;
+
+  @include mediaSmall {
+    margin-right: auto;
+    margin: $base * 10 auto;
+  }
 }
 
 .buy__contact__form {
-    flex-shrink: 0;
-    min-width: 70%;
+  flex-shrink: 0;
+  min-width: 70%;
 }
 
 .buy__contact__row {
-    display: block;
-    text-align: right;
+  display: block;
+  text-align: right;
 
-    & + & {
-        margin-top: $base * 4;
-    }
+  & + & {
+    margin-top: $base * 4;
+  }
+
+  @include mediaSmall {
+    text-align: left;
+  }
 }
 
 .buy__contact__row--textarea {
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
+
+  @include mediaSmall {
+    display: block;
+  }
 }
 
 .buy__contact__label {
-    cursor: pointer;
-    margin-right: $base * 2;
+  cursor: pointer;
+  margin-right: $base * 2;
+
+  @include mediaSmall {
+    display: block;
+    margin-bottom: $base * 2;
+  }
 }
 
 .buy__contact__input {
-    width: 66%;
-    padding: $base*2 $base*4;
-    outline: none;
-    box-shadow: none;
-    border: 1px solid $blue;
-    background: none;
-    font-size: 16px;
-    color: $blue;
-}
+  width: 66%;
+  padding: $base * 2 $base * 4;
+  outline: none;
+  box-shadow: none;
+  border: 1px solid $blue;
+  background: none;
+  font-size: 16px;
+  color: $blue;
 
+  @include mediaSmall {
+    width: 100%;
+  }
+}
 
 // ============= FOOTER ==========
 .footer {
-    position: absolute;
-    display: flex;
-    justify-content: space-between;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    padding: $section-padding/4 $section-padding;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: $section-padding/4 $section-padding;
 
-    .footer__link + .footer__link {
-        margin-left: $base * 2;
-    }
+  .footer__link + .footer__link {
+    margin-left: $base * 2;
+  }
+
+  @include mediaSmall {
+    position: relative;
+    display: block;
+    padding: $base * 5;
+    text-align: center;
+  }
 }
 
+.copy {
+  @include mediaSmall {
+    display: block;
+    margin-bottom: $base * 2;
+  }
+}
 
 // ============= @KEYFRAMES ==========
 @keyframes navigationToggle {
-    50% {
-        height: calc(100vh - #{$header-height-mobile});
-        opacity: 0;
-    }
-    to {
-        height: calc(100vh - #{$header-height-mobile});
-        opacity: 1;
-    }
+  50% {
+    height: calc(100vh - #{$header-height-mobile});
+    opacity: 0;
+  }
+  to {
+    height: calc(100vh - #{$header-height-mobile});
+    opacity: 1;
+  }
 }
