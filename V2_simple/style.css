@@ -32,7 +32,8 @@ body {
     .section {
       margin: 0;
       padding: 20px;
-      padding-top: 84px; } }
+      padding-top: 84px;
+      min-height: auto; } }
 
 .h2 {
   font-family: "Anton", sans-serif;
@@ -120,6 +121,10 @@ body {
     color: #4255a2; }
   .navigation__item:hover, .navigation__item:active {
     opacity: 1; }
+  @media (max-width: 1024px) {
+    .navigation__item {
+      font-size: 30px;
+      margin-bottom: 8px; } }
 
 .section--intro {
   display: flex;

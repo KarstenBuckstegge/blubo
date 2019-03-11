@@ -60,6 +60,7 @@ body {
     margin: 0;
     padding: $section-padding-mobile;
     padding-top: $section-padding-mobile + $header-height-mobile;
+    min-height: auto;
   }
 }
 
@@ -189,6 +190,11 @@ body {
   &:hover,
   &:active {
     opacity: 1;
+  }
+
+  @include mediaSmall {
+    font-size: $font-size * 1.5;
+    margin-bottom: $base * 2;
   }
 }
 
