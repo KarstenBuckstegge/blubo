@@ -18,6 +18,16 @@ navItems.forEach(navItem => {
     navItem.addEventListener('click', scrollToAnchor);
 });
 
+const disablePaypalButton = () => {
+    const paypalButton = document.querySelector('#ppplus_continueButton');
+    paypalButton.setAttribute('disabled', true);
+}
+
+const enablePaypalButton = () => {
+    const paypalButton = document.querySelector('#ppplus_continueButton');
+    paypalButton.removeAttribute('disabled');
+}
+
 const paypalIframeLoaded = () => {
     const loadingIndicator = document.querySelector('.js__buy__payment__loading');
     loadingIndicator.classList.add('hidden');
@@ -28,12 +38,15 @@ const initPaypal = () => {
         async (body) => {
             const approvalUrl = await body.json();
 
-            PAYPAL.apps.PPP({
+            window.ppp = PAYPAL.apps.PPP({
                 'approvalUrl': approvalUrl,
-                'placeholder': 'ppplus',
-                'mode': 'sandbox',
+                'buttonLocation': 'outside',
+                'disableContinue': disablePaypalButton,
+                'enableContinue': enablePaypalButton,
                 'country': 'DE',
-                'onLoad': paypalIframeLoaded
+                'mode': 'sandbox',
+                'onLoad': paypalIframeLoaded,
+                'placeholder': 'ppplus'
             });
         });
 }
