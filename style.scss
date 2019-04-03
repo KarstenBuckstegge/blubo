@@ -5,7 +5,7 @@ $section-padding: $base * 20;
 $section-padding-mobile: $base * 5;
 $burger-height-mobile: $base * 8;
 $header-padding-mobile: $base * 4;
-$header-height-mobile: $burger-height-mobile + $header-padding-mobile * 2;
+$header-height-mobile: $burger-height-mobile+$header-padding-mobile * 2;
 $blue: #4255a2;
 $section-menu-margin: 220px;
 $section-max-width: 1400px;
@@ -112,7 +112,7 @@ body {
     height: 0;
     opacity: 0;
 
-    .navigation__toggle:checked ~ & {
+    .navigation__toggle:checked~& {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -169,18 +169,21 @@ body {
   &:before {
     top: $base * 3;
   }
+
   &:after {
     top: $base * 6;
   }
 
-  .navigation__toggle:checked ~ .navigation__toggle__button & {
+  .navigation__toggle:checked~.navigation__toggle__button & {
     & {
       transform: translateX(7px) translateY(25px) rotate(-45deg);
     }
+
     &::before {
       opacity: 0;
       transform: translateX(7px) translateY(-25px) rotate(45deg);
     }
+
     &::after {
       transform: translateX(20px) translateY(-44px) rotate(90deg);
     }
@@ -193,7 +196,7 @@ body {
   opacity: 0.5;
   transition: opacity 300ms ease-in;
 
-  & + & {
+  &+& {
     margin-top: $base * 2;
   }
 
@@ -296,7 +299,7 @@ body {
   }
 }
 
-.buy__contact {
+.buy__payment {
   display: flex;
 
   @include mediaSmall {
@@ -304,7 +307,7 @@ body {
   }
 }
 
-.buy__contact__image {
+.buy__payment__image {
   margin-right: $base * 5;
 
   @include mediaSmall {
@@ -313,55 +316,51 @@ body {
   }
 }
 
-.buy__contact__form {
+.buy__payment__form {
   flex-shrink: 0;
   min-width: 70%;
 }
 
-.buy__contact__row {
-  display: block;
-  text-align: right;
-
-  & + & {
-    margin-top: $base * 4;
-  }
-
-  @include mediaSmall {
-    text-align: left;
-  }
-}
-
-.buy__contact__row--textarea {
+.buy__payment__loading {
+  position: relative;
   display: flex;
-  justify-content: flex-end;
-
-  @include mediaSmall {
-    display: block;
-  }
-}
-
-.buy__contact__label {
-  cursor: pointer;
-  margin-right: $base * 2;
-
-  @include mediaSmall {
-    display: block;
-    margin-bottom: $base * 2;
-  }
-}
-
-.buy__contact__input {
-  width: 66%;
-  padding: $base * 2 $base * 4;
-  outline: none;
-  box-shadow: none;
-  border: 1px solid $blue;
-  background: none;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
   font-size: 16px;
-  color: $blue;
 
-  @include mediaSmall {
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    display: block;
+    border: 4px solid $blue;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-radius: 50%;
+  }
+
+  &::before {
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
+    transform: rotate(0deg);
+    animation: loadingRotation 1.5s linear;
+    animation-iteration-count: infinite;
+  }
+
+  &::after {
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    transform: rotate(0deg);
+    animation: loadingRotation 2s linear;
+    animation-iteration-count: infinite;
+    animation-direction: reverse;
   }
 }
 
@@ -375,7 +374,7 @@ body {
   left: 0;
   padding: $section-padding/4 $section-padding;
 
-  .footer__link + .footer__link {
+  .footer__link+.footer__link {
     margin-left: $base * 2;
   }
 
@@ -394,14 +393,27 @@ body {
   }
 }
 
+// ======== Overriding Globals =======
+
+.hidden {
+  display: none;
+}
+
 // ============= @KEYFRAMES ==========
 @keyframes navigationToggle {
   50% {
     height: calc(100vh - #{$header-height-mobile});
     opacity: 0;
   }
+
   to {
     height: calc(100vh - #{$header-height-mobile});
     opacity: 1;
+  }
+}
+
+@keyframes loadingRotation {
+  to {
+    transform: rotate(360deg);
   }
 }

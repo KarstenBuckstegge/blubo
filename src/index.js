@@ -18,18 +18,24 @@ navItems.forEach(navItem => {
     navItem.addEventListener('click', scrollToAnchor);
 });
 
+const paypalIframeLoaded = () => {
+    const loadingIndicator = document.querySelector('.js__buy__payment__loading');
+    loadingIndicator.classList.add('hidden');
+}
+
 const initPaypal = () => {
     fetch('https://28lysztg6d.execute-api.eu-west-1.amazonaws.com/dev/get-approval-url').then(
         async (body) => {
-        const approvalUrl = await body.json();
+            const approvalUrl = await body.json();
 
-        PAYPAL.apps.PPP({
-            'approvalUrl': approvalUrl,
-            'placeholder': 'ppplus',
-            'mode': 'sandbox',
-            'country': 'DE'
+            PAYPAL.apps.PPP({
+                'approvalUrl': approvalUrl,
+                'placeholder': 'ppplus',
+                'mode': 'sandbox',
+                'country': 'DE',
+                'onLoad': paypalIframeLoaded
+            });
         });
-    });
 }
 
 initPaypal();

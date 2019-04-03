@@ -197,59 +197,57 @@ body {
     .buy__title__price {
       font-size: 30px; } }
 
-.buy__contact {
+.buy__payment {
   display: flex; }
   @media (max-width: 1024px) {
-    .buy__contact {
+    .buy__payment {
       flex-direction: column; } }
 
-.buy__contact__image {
+.buy__payment__image {
   margin-right: 20px; }
   @media (max-width: 1024px) {
-    .buy__contact__image {
+    .buy__payment__image {
       margin-right: auto;
       margin: 40px auto; } }
 
-.buy__contact__form {
+.buy__payment__form {
   flex-shrink: 0;
   min-width: 70%; }
 
-.buy__contact__row {
-  display: block;
-  text-align: right; }
-  .buy__contact__row + .buy__contact__row {
-    margin-top: 16px; }
-  @media (max-width: 1024px) {
-    .buy__contact__row {
-      text-align: left; } }
-
-.buy__contact__row--textarea {
+.buy__payment__loading {
+  position: relative;
   display: flex;
-  justify-content: flex-end; }
-  @media (max-width: 1024px) {
-    .buy__contact__row--textarea {
-      display: block; } }
-
-.buy__contact__label {
-  cursor: pointer;
-  margin-right: 8px; }
-  @media (max-width: 1024px) {
-    .buy__contact__label {
-      display: block;
-      margin-bottom: 8px; } }
-
-.buy__contact__input {
-  width: 66%;
-  padding: 8px 16px;
-  outline: none;
-  box-shadow: none;
-  border: 1px solid #4255a2;
-  background: none;
-  font-size: 16px;
-  color: #4255a2; }
-  @media (max-width: 1024px) {
-    .buy__contact__input {
-      width: 100%; } }
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  font-size: 16px; }
+  .buy__payment__loading::before, .buy__payment__loading::after {
+    content: '';
+    position: absolute;
+    display: block;
+    border: 4px solid #4255a2;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-radius: 50%; }
+  .buy__payment__loading::before {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(0deg);
+    animation: loadingRotation 1.5s linear;
+    animation-iteration-count: infinite; }
+  .buy__payment__loading::after {
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    transform: rotate(0deg);
+    animation: loadingRotation 2s linear;
+    animation-iteration-count: infinite;
+    animation-direction: reverse; }
 
 .footer {
   position: absolute;
@@ -273,6 +271,9 @@ body {
     display: block;
     margin-bottom: 8px; } }
 
+.hidden {
+  display: none; }
+
 @keyframes navigationToggle {
   50% {
     height: calc(100vh - 64px);
@@ -280,3 +281,7 @@ body {
   to {
     height: calc(100vh - 64px);
     opacity: 1; } }
+
+@keyframes loadingRotation {
+  to {
+    transform: rotate(360deg); } }
