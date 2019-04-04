@@ -72,13 +72,12 @@
       </div>
 
       <div class="buy__payment__form">
-        <div class="buy__payment__loading js__buy__payment__loading">
-          Zahlungsmittel<br />
-          werden geladen
-        </div>
+        <div class="buy__payment__loading js__buy__payment__loading"></div>
         <div id="ppplus"></div>
-        <button type="submit" id="ppplus_continueButton" onclick="ppp.doCheckout()">
-          Checkout Now
+        <p class="buy__payment__warning hidden">Bitte wählen sie eine Zahlungsmöglichkeit.</p>
+        <button type="submit" id="ppplus_continueButton" class="button buy__payment__button" onclick="ppp.doCheckout()"
+          disabled>
+          Jetzt kaufen!
         </button>
       </div>
     </div>

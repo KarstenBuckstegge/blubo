@@ -21,16 +21,25 @@ navItems.forEach(navItem => {
 const disablePaypalButton = () => {
     const paypalButton = document.querySelector('#ppplus_continueButton');
     paypalButton.setAttribute('disabled', true);
+
+    const warningMessage = document.querySelector('.buy__payment__warning');
+    warningMessage.classList.remove('hidden');
 }
 
 const enablePaypalButton = () => {
     const paypalButton = document.querySelector('#ppplus_continueButton');
     paypalButton.removeAttribute('disabled');
+
+    const warningMessage = document.querySelector('.buy__payment__warning');
+    warningMessage.classList.add('hidden');
 }
 
 const paypalIframeLoaded = () => {
     const loadingIndicator = document.querySelector('.js__buy__payment__loading');
     loadingIndicator.classList.add('hidden');
+
+    const paypalContainer = document.querySelector('#ppplus');
+    paypalContainer.classList.add('buy__payment__ppp__loaded');
 }
 
 const initPaypal = () => {
@@ -46,7 +55,14 @@ const initPaypal = () => {
                 'country': 'DE',
                 'mode': 'sandbox',
                 'onLoad': paypalIframeLoaded,
-                'placeholder': 'ppplus'
+                'placeholder': 'ppplus',
+                'styles': {
+                    "psp": {
+                        "font-family": ["Helvetica", "sans-serif"],
+                        "font-size": "16px",
+                        "color": "#4255a2"
+                    }
+                }
             });
         });
 }
