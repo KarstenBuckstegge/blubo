@@ -1,5 +1,8 @@
 import animateScrollTo from 'animated-scroll-to';
 
+const COOKIES_ACCEPTED_ALL = 'cookiesAcceptedAll';
+
+// SCROLL THINGS
 const scrollToAnchor = (e) => {
     e.preventDefault();
     const target = e.currentTarget;
@@ -13,11 +16,38 @@ const scrollToAnchor = (e) => {
     menuToggleCheckbox.checked = false;
 }
 
-const navItems = document.querySelectorAll('.js__navigation__item');
-navItems.forEach(navItem => {
-    navItem.addEventListener('click', scrollToAnchor);
-});
+const initScrollAnimation = () => {
+    const navItems = document.querySelectorAll('.js__navigation__item');
+    navItems.forEach(navItem => {
+        navItem.addEventListener('click', scrollToAnchor);
+    });
+}
 
+// COOKIE THINGS
+const hideCookieBanner = cookieBannerElem => {
+    cookieBannerElem.classList += ' hidden';
+}
+const acceptCookies = (cookieBannerElem, localStorage) => {
+    localStorage.setItem(COOKIES_ACCEPTED_ALL, true);
+
+    hideCookieBanner(cookieBannerElem);
+}
+
+const initCookieBanner = () => {
+    const cookieBanner = document.querySelector('.js__cookie');
+    const cookieButton = cookieBanner.querySelector('.js__cookie--accept');
+
+    const localStorage = window.localStorage;
+    const cookiesAccepted = localStorage.getItem(COOKIES_ACCEPTED_ALL);
+
+    if (cookiesAccepted) {
+        hideCookieBanner(cookieBanner);
+    } else {
+        cookieButton.addEventListener('click', () => acceptCookies(cookieBanner, localStorage));
+    }
+}
+
+// PAYPALL THINGS
 const disablePaypalButton = () => {
     const paypalButton = document.querySelector('#ppplus_continueButton');
     paypalButton.setAttribute('disabled', true);
@@ -67,4 +97,11 @@ const initPaypal = () => {
         });
 }
 
-initPaypal();
+// INIT
+const init = () => {
+    initPaypal();
+    initScrollAnimation();
+    initCookieBanner();
+}
+
+init();

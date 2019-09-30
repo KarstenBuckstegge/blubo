@@ -2,6 +2,7 @@
 $base: 4px;
 $border-radius: $base * 2;
 $blue: #4255a2;
+$lightblue: #b3b8d0;
 $orange: #e6712c;
 
 $small-breakpoint: 1024px;
@@ -101,6 +102,10 @@ body {
   }
 }
 
+.button--small {
+  padding: $base*3 $base*4;
+}
+
 .link {
   text-decoration: none;
 
@@ -112,6 +117,32 @@ body {
 
   &:hover {
     color: darken($blue, 20%);
+  }
+}
+
+// ============= COOKIE BANNER ==========
+
+.cookie {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: $base*4 $base*8;
+  background: $lightblue;
+  font-size: $font-size-small;
+  z-index: 999;
+}
+
+.cookie__text {
+  margin-bottom: $base * 4;
+}
+
+.cookie__buttons {
+  display: flex;
+  align-items: baseline;
+
+  *+* {
+    margin-left: $base * 4;
   }
 }
 
