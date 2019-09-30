@@ -83,6 +83,7 @@ const initPaypal = () => {
                 'disableContinue': disablePaypalButton,
                 'enableContinue': enablePaypalButton,
                 'country': 'DE',
+                'language': 'de_DE',
                 'mode': 'sandbox',
                 'onLoad': paypalIframeLoaded,
                 'placeholder': 'ppplus',
